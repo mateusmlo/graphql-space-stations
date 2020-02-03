@@ -16,8 +16,62 @@ Para isso:
 - só mostre os planetas com gravidade alta, os dados não mostram exatamente qual gravidade o planeta tem, mas a Voltbras fez os cálculos e os planetas ideais(com gravidade alta),
 são aproximadamente os mesmos que têm sua massa(`exoplanet.mass.value`) maior que 25 [M_jup] (`exoplanet.mass.unit`)
 
+## Exemplo do dado da API da Arcsecond
+```json
+{
+  "count": 4399,
+  "next": "https://api.arcsecond.io/exoplanets/?page=2",
+  "previous": null,
+  "results": [
+    {
+      "name": "11 Com b",
+      ...
+      "mass": {
+        "value": 19.4,
+        "unit": "M_jup",
+        ...
+      },
+      ...
+    },
+    ...
+  ]
+}
+```
+
+## Exemplo do dado da sua API
+
+Dado uma query
+```graphql
+{
+    suitablePlanets {
+        name
+        mass
+        hasStation
+    }
+}
+```
+Retornar uma response
+
+```json
+{
+    "suitablePlanets": [
+        {
+            "name": "XPTO",
+            "mass": 27.5,
+            "hasStation": false
+        },
+        {
+            "name": "REPOLHO",
+            "mass": 52.0,
+            "hasStation": true
+        },
+        ...
+    ]
+}
+```
+
 ## Requisitos
-- [ ] Sinta-se livre para fazer qualquer um dos proximos requisitos diferente do que foi pedido desde que consiga justificar a mudança. Exp: não fiz o requisito de tal maneira pois a implementação que eu fiz é mais perfomatica e segura.
+Sinta-se livre para fazer qualquer um dos proximos requisitos diferente do que foi pedido desde que consiga justificar a mudança. Ex.: não fiz o requisito de tal maneira pois a implementação que eu fiz é mais perfomatica e segura.
 - [ ] Crie um servidor em Node.js usando [Apollo GraphQL Server](https://www.apollographql.com/docs/apollo-server/)
     - [ ] Crie o schema GraphQL com uma query `suitablePlanets`, que retorna os dados dos planetas com gravidade alta
     - [ ] Crie uma mutation `installStation`, que dado um planeta, instala uma estação de carregamento no planeta(é sugerido criar uma tabela em algum DB que guarde a informação de aonde estão instaladas as estações)
@@ -27,9 +81,10 @@ são aproximadamente os mesmos que têm sua massa(`exoplanet.mass.value`) maior 
 
 # Extras
 - [ ] Adicione testes usando [Jest] ou qualquer outro framework para testes
-- [ ] Use Typescript
+- [ ] Usar Typescript
 - [ ] Coloque um docker-compose, que simplifique rodar o seu servidor e o DB
 - [ ] Usamos [prisma](prisma.io) mas sinta-se livre para usar qualquer ORM
+- [ ] Como o dado da [Arcsecond] vem páginado, tente pegar mais de uma página(e.g. 10 páginas)
 
 [Jest]: https://jest-everywhere.now.sh/
 [Voltbras]: https://voltbras.com.br
