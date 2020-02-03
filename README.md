@@ -17,10 +17,11 @@ Para isso:
 são aproximadamente os mesmos que têm sua massa(`exoplanet.mass.value`) maior que 25 [M_jup] (`exoplanet.mass.unit`)
 
 ## Requisitos
-- [ ] Crie um servidor em Node.js com GraphQL
+- [ ] Sinta-se livre para fazer qualquer um dos proximos requisitos diferente do que foi pedido desde que consiga justificar a mudança. Exp: não fiz o requisito de tal maneira pois a implementação que eu fiz é mais perfomatica e segura.
+- [ ] Crie um servidor em Node.js usando [Apollo GraphQL Server](https://www.apollographql.com/docs/apollo-server/)
     - [ ] Crie o schema GraphQL com uma query `suitablePlanets`, que retorna os dados dos planetas com gravidade alta
     - [ ] Crie uma mutation `installStation`, que dado um planeta, instala uma estação de carregamento no planeta(é sugerido criar uma tabela em algum DB que guarde a informação de aonde estão instaladas as estações)
-    - [ ] Use um RESTDataSource para pegar os dados da [Arcsecond]
+    - [ ] Use um [RESTDataSource](https://www.apollographql.com/docs/apollo-server/data/data-sources/) para pegar os dados da [Arcsecond]
 - [ ] Deixe aberto em algum repositório open-source(gitlab, github, etc...)
 - [ ] Integre o servidor com algum banco de dados(para marcar onde as estações foram instaladas)
 
@@ -28,8 +29,10 @@ são aproximadamente os mesmos que têm sua massa(`exoplanet.mass.value`) maior 
 - [ ] Adicione testes usando [Jest] ou qualquer outro framework para testes
 - [ ] Use Typescript
 - [ ] Coloque um docker-compose, que simplifique rodar o seu servidor e o DB
+- [ ] Usamos [prisma](prisma.io) mas sinta-se livre para usar qualquer ORM
 
 [Jest]: https://jest-everywhere.now.sh/
 [Voltbras]: https://voltbras.com.br
 [M_jup]: https://en.wikipedia.org/wiki/Jupiter_mass
 [Arcsecond]: https://api.arcsecond.io/swagger/
+
