@@ -16,7 +16,7 @@ Para isso:
 - só mostre os planetas com gravidade alta, os dados não mostram exatamente qual gravidade o planeta tem, mas a Voltbras fez os cálculos e os planetas ideais(com gravidade alta),
 são aproximadamente os mesmos que têm sua massa(`exoplanet.mass.value`) maior que 25 [M_jup] (`exoplanet.mass.unit`)
 
-## Exemplo do dado da API
+## Exemplo do dado da API da Arcsecond
 ```json
 {
   "count": 4399,
@@ -35,6 +35,38 @@ são aproximadamente os mesmos que têm sua massa(`exoplanet.mass.value`) maior 
     },
     ...
   ]
+}
+```
+
+## Exemplo do dado da sua API
+
+Dado uma query
+```graphql
+{
+    suitablePlanets {
+        name
+        mass
+        hasStation
+    }
+}
+```
+Retornar uma response
+
+```json
+{
+    "suitablePlanets": [
+        {
+            "name": "XPTO",
+            "mass": 27.5,
+            "hasStation": false
+        },
+        {
+            "name": "REPOLHO",
+            "mass": 52.0,
+            "hasStation": true
+        },
+        ...
+    ]
 }
 ```
 
