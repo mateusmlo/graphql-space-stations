@@ -16,6 +16,28 @@ Para isso:
 - só mostre os planetas com gravidade alta, os dados não mostram exatamente qual gravidade o planeta tem, mas a Voltbras fez os cálculos e os planetas ideais(com gravidade alta),
 são aproximadamente os mesmos que têm sua massa(`exoplanet.mass.value`) maior que 25 [M_jup] (`exoplanet.mass.unit`)
 
+## Exemplo do dado da API
+```json
+{
+  "count": 4399,
+  "next": "https://api.arcsecond.io/exoplanets/?page=2",
+  "previous": null,
+  "results": [
+    {
+      "name": "11 Com b",
+      ...
+      "mass": {
+        "value": 19.4,
+        "unit": "M_jup",
+        ...
+      },
+      ...
+    },
+    ...
+  ]
+}
+```
+
 ## Requisitos
 - [ ] Crie um servidor em Node.js com GraphQL
     - [ ] Crie o schema GraphQL com uma query `suitablePlanets`, que retorna os dados dos planetas com gravidade alta
@@ -28,6 +50,7 @@ são aproximadamente os mesmos que têm sua massa(`exoplanet.mass.value`) maior 
 - [ ] Adicione testes usando [Jest] ou qualquer outro framework para testes
 - [ ] Use Typescript
 - [ ] Coloque um docker-compose, que simplifique rodar o seu servidor e o DB
+- [ ] Como o dado da [Arcsecond] vem páginado, tente pegar mais de uma página(e.g. 10 páginas)
 
 [Jest]: https://jest-everywhere.now.sh/
 [Voltbras]: https://voltbras.com.br
