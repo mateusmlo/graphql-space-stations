@@ -12,7 +12,7 @@ Por isso precisamos realizar o abastecimento das naves em planetas com alta grav
 Para isso:
 
 - utilize a API de exoplanetas da [NASA], o que te possibilita buscar os planetas fora do sistema solar!
-- só mostre os planetas com gravidade alta, os dados não mostram exatamente qual gravidade o planeta tem, mas a Voltbras fez os cálculos e os planetas ideais(com gravidade alta), são aproximadamente os mesmos que têm sua massa maior que 25 [M_jup] (`exoplanet.pl_bmassj`)
+- só mostre os planetas com gravidade alta, os dados não mostram exatamente qual gravidade o planeta tem, mas a Voltbras fez os cálculos e os planetas ideais(com gravidade alta), são aproximadamente os mesmos que têm sua massa maior que 10 jupiter mass (`exoplanet.pl_bmassj`)
 
 ## Requisitos
 
@@ -42,27 +42,21 @@ Sinta-se livre para fazer qualquer um dos próximos requisitos diferente do que 
   - A recarga de uma reserva deve ser finalizada ao final do intervalo da reserva.
 - [ ] Crie uma query `stationHistory`, onde será possível visualizar o histórico de recargas de uma estação (mostrar o horário, o tempo de duração da recarga e o usuário que realizou-a)
 
-## Exemplo do dado da API da Arcsecond
+## Exemplo do dado da API da NASA
 
 ```json
-{
-  "count": 4399,
-  "next": "https://api.arcsecond.io/exoplanets/?page=2",
-  "previous": null,
-  "results": [
-    {
-      "name": "11 Com b",
-      ...
-      "mass": {
-        "value": 19.4,
-        "unit": "M_jup",
-        ...
-      },
-      ...
-    },
+[
+  {
+    "pl_hostname":"11 UMi",
     ...
-  ]
-}
+    "pl_bmassj":14.74000,
+    "pl_bmassjerr1":2.50000,
+    "pl_bmassjerr2":-2.50000,
+    "pl_bmassjlim":0,
+    ...
+  },
+  ...
+]
 ```
 
 ## Exemplo do dado da sua API
@@ -103,11 +97,13 @@ Retornar uma response
 
 ```graphql
 {
-  installStation(input: {name: "nome de exemplo", planet: "planeta de exemplo" })
+  installStation(
+    input: { name: "nome de exemplo", planet: "planeta de exemplo" }
+  )
 }
 ```
 
+[nasa]: https://exoplanetarchive.ipac.caltech.edu/cgi-bin/nstedAPI/nph-nstedAPI?table=exoplanets&format=json
 [jest]: https://jest-everywhere.now.sh/
 [voltbras]: https://voltbras.com.br
-[m_jup]: https://en.wikipedia.org/wiki/Jupiter_mass
-[arcsecond]: https://api.arcsecond.io/swagger/
+[jupiter mass]: https://en.wikipedia.org/wiki/Jupiter_mass
