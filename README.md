@@ -23,8 +23,10 @@ Sinta-se livre para fazer qualquer um dos próximos requisitos diferente do que 
   - [ ] Crie uma mutation `installStation`, que dado um planeta, instala uma estação de carregamento no planeta(é sugerido criar uma tabela em algum DB que guarde a informação de aonde estão instaladas as estações)
   - [ ] Use um [RESTDataSource](https://www.apollographql.com/docs/apollo-server/data/data-sources/) para pegar os dados da [NASA]
   - [ ] Crie uma query `stations`, que irá listar todas as estações
-  - [ ] Crie uma mutation `recharge`, que dado uma estação, um usuário e um datetime de quanto a recarga irá finalizar, realiza uma recarga no veículo do usuário, começando a partir do momento em que a mutation foi chamada (só é possível realizar uma recarga na estação por vez)
-- [ ] Deixe aberto em algum repositório open-source(gitlab, github, etc...)
+  - [ ] Crie uma mutation `recharge`, que dado uma estação e um datetime de quanto a recarga irá finalizar, realiza uma recarga no veículo do usuário, começando a partir do momento em que a mutation foi chamada
+    - Só é possível realizar uma recarga na estação por vez
+    - Essa recarga deve estar atrelado a um usuário - sinta-se livre para implementar da maneira que você desejar.
+    - Um usuário só pode ter no máximo uma recarga em andamento
 - [ ] Documente o seu projeto, e explique como rodar ele
 
 # Extras
@@ -33,9 +35,11 @@ Sinta-se livre para fazer qualquer um dos próximos requisitos diferente do que 
 - [ ] Usar Typescript
 - [ ] Coloque um docker-compose, que simplifique rodar o seu servidor e o DB
 - [ ] Usamos [prisma](prisma.io) mas sinta-se livre para usar qualquer ORM
-- [ ] Adicione autenticação
+- [ ] Adicione autenticação (apenas um usuário autenticado poderá fazer uma recarga ou uma reserva)
 - [ ] Crie uma mutation `reservation`, que dado uma estação, um usuário e um intervalo de tempo, cria uma reserva da estação para o usuário naquele determinado intervalo de tempo.
-  - Não deve ser possível criar uma reserva que conflite com o
+  - Não deve ser possível criar uma reserva que conflite com o intervalo de outra reserva ou de uma recarga já em andamento
+  - Para realizar uma recarga de uma determinada reserva, é necessário chamar uma mutation (podendo ser a própria `recharge` ou uma nova mutation - como você preferir) passando apenas um `reservationId`. A utilização só pode ocorrer dentro do próprio intervalo de tempo da reserva (e.g Se a reserva foi de 12:00 até 13:00, só deve ser possível utilizá-la entre 12:00 e 13:00).
+  - A recarga de uma reserva deve ser finalizada ao final do intervalo da reserva.
 - [ ] Crie uma query `stationHistory`, onde será possível visualizar o histórico de recargas de uma estação (mostrar o horário, o tempo de duração da recarga e o usuário que realizou-a)
 
 ## Exemplo do dado da API da Arcsecond
