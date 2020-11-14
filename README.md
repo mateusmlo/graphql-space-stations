@@ -95,6 +95,14 @@ Retornar uma response
 }
 ```
 
+## Exemplo das mutations
+
+```graphql
+{
+  installStation(input: {name: "nome de exemplo", planet: "planeta de exemplo" })
+}
+```
+
 [jest]: https://jest-everywhere.now.sh/
 [voltbras]: https://voltbras.com.br
 [m_jup]: https://en.wikipedia.org/wiki/Jupiter_mass
