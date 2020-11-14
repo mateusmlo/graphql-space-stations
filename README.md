@@ -28,7 +28,7 @@ Sinta-se livre para fazer qualquer um dos próximos requisitos diferente do que 
     - Essa recarga deve estar atrelado a um usuário - sinta-se livre para implementar da maneira que você desejar.
     - Um usuário só pode ter no máximo uma recarga em andamento
 - [ ] Documente o seu projeto, e explique como rodar ele
-- Crie o projeto em algum repositório privado no GitHub ou GitLab
+- [ ] Crie o projeto em algum repositório privado no GitHub ou GitLab
 
 # Extras
 
