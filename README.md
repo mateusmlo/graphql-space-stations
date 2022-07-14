@@ -11,7 +11,7 @@ Por isso precisamos realizar o abastecimento das naves em planetas com alta grav
 
 Para isso:
 
-- utilize a API de exoplanetas da [NASA], o que te possibilita buscar os planetas fora do sistema solar!
+- utilize a API de exoplanetas da [NASA], na qual você pode consultar sua [documentação](https://exoplanetarchive.ipac.caltech.edu/docs/program_interfaces.html) e [queries comuns](https://exoplanetarchive.ipac.caltech.edu/docs/API_queries.html), o que te possibilita buscar os planetas fora do sistema solar!
 - só mostre os planetas com gravidade alta, os dados não mostram exatamente qual gravidade o planeta tem, mas a Voltbras fez os cálculos e os planetas ideais(com gravidade alta), são aproximadamente os mesmos que têm sua massa maior que 10 jupiter mass (`exoplanet.pl_bmassj`)
 
 ## Requisitos
@@ -21,7 +21,6 @@ Sinta-se livre para fazer qualquer um dos próximos requisitos diferente do que 
 - [ ] Crie um servidor em Node.js usando [Apollo GraphQL Server](https://www.apollographql.com/docs/apollo-server/)
   - [ ] Crie o schema GraphQL com uma query `suitablePlanets`, que retorna os dados dos planetas com gravidade alta
   - [ ] Crie uma mutation `installStation`, que dado um planeta, instala uma estação de carregamento no planeta(é sugerido criar uma tabela em algum DB que guarde a informação de aonde estão instaladas as estações)
-  - [ ] Use um [RESTDataSource](https://www.apollographql.com/docs/apollo-server/data/data-sources/) para pegar os dados da [NASA]
   - [ ] Crie uma query `stations`, que irá listar todas as estações instaladas nos planetas
   - [ ] Crie uma mutation `recharge`, que dado uma estação e um datetime de quanto a recarga irá finalizar, realiza uma recarga, começando a partir do momento em que a mutation foi chamada e finalizando com a datetime passada.
     - Só é possível realizar uma recarga na estação por vez
@@ -104,7 +103,7 @@ Retornar uma response
 }
 ```
 
-[nasa]: https://exoplanetarchive.ipac.caltech.edu/cgi-bin/nstedAPI/nph-nstedAPI?table=exoplanets&format=json
+[nasa]: https://exoplanetarchive.ipac.caltech.edu/TAP/sync?query=select+*+from+ps&format=json
 [jest]: https://jest-everywhere.now.sh/
 [voltbras]: https://voltbras.com.br
 [jupiter mass]: https://en.wikipedia.org/wiki/Jupiter_mass
