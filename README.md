@@ -28,6 +28,7 @@ Sinta-se livre para fazer qualquer um dos próximos requisitos diferente do que 
     - Um usuário só pode ter no máximo uma recarga em andamento
 - [ ] Documente o seu projeto, e explique como rodar ele
 - [ ] Crie o projeto em algum repositório privado no GitHub ou GitLab
+- [ ] Envie junto com o repositório do seu desafio um vídeo curto demonstrando o funcionamento básico do sistema, de formato livre, mostrando as funcionalidades implementadas.
 
 # Extras
 
