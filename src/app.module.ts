@@ -7,12 +7,15 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { jwtEnvs } from './config/jwt.config';
 import { dbConfig } from './config/db.config';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { User } from './users/entities/user.entity';
-import { UserModule } from './users/user.module';
+import { User } from './user/entities/user.entity';
+import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
 import { Planet } from './planet/entities/planet.entity';
 import { StationModule } from './station/station.module';
 import { Station } from './station/entity/station.entity';
+import { RechargeModule } from './recharge/recharge.module';
+import { Recharge } from './recharge/entity/recharge.entity';
+import { ScheduleModule } from '@nestjs/schedule';
 
 @Module({
   imports: [
@@ -30,9 +33,10 @@ import { Station } from './station/entity/station.entity';
         password: configService.get<string>('dbPassword'),
         database: configService.get<string>('db'),
         host: configService.get<string>('dbHost'),
-        entities: [User, Planet, Station],
+        entities: [User, Planet, Station, Recharge],
         synchronize: true,
-        autoLoadEntities: true
+        autoLoadEntities: true,
+        timezone: '-03:00'
       })
     }),
     GraphQLModule.forRoot<ApolloDriverConfig>({
@@ -40,14 +44,22 @@ import { Station } from './station/entity/station.entity';
       introspection: true,
       playground: true,
       autoSchemaFile: true,
-      include: [PlanetModule, UserModule, AuthModule, StationModule],
+      include: [
+        PlanetModule,
+        UserModule,
+        AuthModule,
+        StationModule,
+        RechargeModule
+      ],
       context: ({ req }) => ({ req })
     }),
     NasaModule,
     PlanetModule,
     UserModule,
     AuthModule,
-    StationModule
+    StationModule,
+    RechargeModule,
+    ScheduleModule.forRoot()
   ],
   controllers: [],
   providers: []

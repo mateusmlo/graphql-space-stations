@@ -4,10 +4,12 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn
 } from 'typeorm';
 import * as bcrypt from 'bcrypt';
+import { Recharge } from 'src/recharge/entity/recharge.entity';
 
 @Entity()
 export class User {
@@ -20,6 +22,9 @@ export class User {
   @Column()
   @Exclude({ toPlainOnly: true })
   password!: string;
+
+  @OneToMany(() => Recharge, (recharge) => recharge.user, { nullable: true })
+  recharges?: Recharge[];
 
   @CreateDateColumn()
   createdAt!: Date;

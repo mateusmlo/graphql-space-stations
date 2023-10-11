@@ -22,7 +22,7 @@ Sinta-se livre para fazer qualquer um dos próximos requisitos diferente do que 
   - [x] Crie o schema GraphQL com uma query `suitablePlanets`, que retorna os dados dos planetas com gravidade alta
   - [x] Crie uma mutation `installStation`, que dado um planeta, instala uma estação de carregamento no planeta(é sugerido criar uma tabela em algum DB que guarde a informação de aonde estão instaladas as estações)
   - [x] Crie uma query `stations`, que irá listar todas as estações instaladas nos planetas
-  - [ ] Crie uma mutation `recharge`, que dado uma estação e um datetime de quanto a recarga irá finalizar, realiza uma recarga, começando a partir do momento em que a mutation foi chamada e finalizando com a datetime passada.
+  - [x] Crie uma mutation `recharge`, que dado uma estação e um datetime de quanto a recarga irá finalizar, realiza uma recarga, começando a partir do momento em que a mutation foi chamada e finalizando com a datetime passada.
     - Só é possível realizar uma recarga na estação por vez
     - Essa recarga deve estar atrelado a um usuário - sinta-se livre para implementar da maneira que você desejar.
     - Um usuário só pode ter no máximo uma recarga em andamento
@@ -41,7 +41,7 @@ Sinta-se livre para fazer qualquer um dos próximos requisitos diferente do que 
   - Não deve ser possível criar uma reserva que conflite com o intervalo de outra reserva ou de uma recarga já em andamento
   - Para realizar uma recarga de uma determinada reserva, é necessário chamar uma mutation (podendo ser a própria `recharge` ou uma nova mutation - como você preferir) passando apenas um `reservationId`. A utilização só pode ocorrer dentro do próprio intervalo de tempo da reserva (e.g. Se a reserva foi de 12:00 até 13:00, só deve ser possível utilizá-la entre 12:00 e 13:00).
   - A recarga de uma reserva deve ser finalizada ao final do intervalo da reserva.
-- [ ] Crie uma query `stationHistory`, onde será possível visualizar o histórico de recargas de uma estação (mostrar o horário, o tempo de duração da recarga e o usuário que realizou-a)
+- [x] Crie uma query `stationHistory`, onde será possível visualizar o histórico de recargas de uma estação (mostrar o horário, o tempo de duração da recarga e o usuário que realizou-a)
 
 ## Exemplo do dado da API da NASA
 

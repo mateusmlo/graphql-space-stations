@@ -8,6 +8,7 @@ services:
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
       - MYSQL_DATABASE=${MYSQL_DATABASE}
       - MYSQL_TCP_PORT=${MYSQL_TCP_PORT}
+      - TZ=-03:00
     restart: always
     healthcheck:
       test: ["CMD-SHELL", "mysql -h ${MYSQL_HOST} -u admin -p$$MYSQL_PASSWORD" ]
