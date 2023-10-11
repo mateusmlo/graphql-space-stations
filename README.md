@@ -1,18 +1,33 @@
 # backend-challenge
 
-O ano é 2118, 100 anos após a fundação da [Voltbras]. Expandimos nosso negócios para gerenciamento de carregamento de veículos espaciais não tripulados com propulsão de íons.
-O Propulsor de Íons é um dos diversos tipos de propulsão espacial, que utiliza feixes de luz à base de energia elétrica (aí onde entra a Voltbras, iremos fornecer esta energia).
+## Sobre o desafio
 
-Especificamente, esta propulsão de energia deve ser provinda de combustível nuclear, pois a força de impulsão é muito forte.
-Se a inserção do combustível for realizada num planeta de baixa gravidade, acontece a fissão do combustível nuclear e perde-se bastante potencial energético.
-Por isso precisamos realizar o abastecimento das naves em planetas com alta gravidade, nos quais chega a ser 100 vezes mais eficiente o abastecimento.
+Meu repositório para o desafio técnico da Voltbras! Num geral foi um desafio relativamente simples, com um ponto de atenção que é a comunicação com a API da NASA (claramente um legadão) que retorna um volume extremamente alto de dados, já casando com a ideia do GraphQL de recuperar apenas o necessário, o que na API da NASA é feito via SQL no query parameter. Para lidar com o volume de dados decidi usar cache com Redis, com duração de 24h (já que novos planetas não devem aparecer tão fácil), então apenas o primeiro request vai levar alguns segundos. Possui autenticação com JWT em todas as rotas. Um dos desafios, como de praxe no JS, foi lidar com as datas para a lógica do período de recarga nas estações e também para o histórico das recargas.
 
-**O seu trabalho é** descobrir em quais planetas a Voltbras pode instalar seus novos postos de carregamento e otimizar a experiência de recarga para os viajantes espaciais.
+## Stack
 
-Para isso:
+- NestJS
+- Apollo
+- GraphQL
+- MySQL
+- Redis
+- Docker Compose
 
-- utilize a API de exoplanetas da [NASA], na qual você pode consultar sua [documentação](https://exoplanetarchive.ipac.caltech.edu/docs/program_interfaces.html) e [queries comuns](https://exoplanetarchive.ipac.caltech.edu/docs/API_queries.html), o que te possibilita buscar os planetas fora do sistema solar!
-- só mostre os planetas com gravidade alta, os dados não mostram exatamente qual gravidade o planeta tem, mas a Voltbras fez os cálculos e os planetas ideais(com gravidade alta), são aproximadamente os mesmos que têm sua massa maior que 10 jupiter mass (`exoplanet.pl_bmassj`)
+## Como Rodar
+
+O projeto usa Docker Compose então deixar tudo funcionando é bem fácil! Faça uma cópia do arquivo `.env.example` para um chamado apenas `.env`; os valores podem ser mantidos. No terminal, basta rodar os comandos:
+
+```sh
+#subir os containers
+docker-compose up -d
+
+#instalar as dependencias
+yarn
+
+#inicializar o server
+yarn start:dev
+```
+
 
 ## Requisitos
 
@@ -26,7 +41,7 @@ Sinta-se livre para fazer qualquer um dos próximos requisitos diferente do que 
     - Só é possível realizar uma recarga na estação por vez
     - Essa recarga deve estar atrelado a um usuário - sinta-se livre para implementar da maneira que você desejar.
     - Um usuário só pode ter no máximo uma recarga em andamento
-- [ ] Documente o seu projeto, e explique como rodar ele
+- [x] Documente o seu projeto, e explique como rodar ele
 - [x] Crie o projeto em algum repositório privado no GitHub ou GitLab
 - [ ] Envie junto com o repositório do seu desafio um vídeo curto demonstrando o funcionamento básico do sistema, de formato livre, mostrando as funcionalidades implementadas.
 
