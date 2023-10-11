@@ -16,8 +16,8 @@ export class Planet {
   @Column({ unique: true })
   name: string;
 
-  @Column()
-  bMassj: number;
+  @Column({ type: 'float' })
+  mass: number;
 
   @OneToMany(() => Station, (station) => station.planet, { eager: true })
   stations: Station[];

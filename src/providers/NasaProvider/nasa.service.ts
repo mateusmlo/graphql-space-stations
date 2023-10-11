@@ -25,6 +25,7 @@ export class NasaService {
 
       if (!cachedRes) {
         let planets: PlanetDTO[] = [];
+
         const { data } = await firstValueFrom(
           this.httpService.get<PlanetPayload[]>(
             '/sync?query=select+pl_name,pl_bmassj+from+ps+where+pl_bmassj>10&format=json'
@@ -34,7 +35,7 @@ export class NasaService {
         data.map((planet) => {
           planets = planets.concat({
             name: planet.pl_name,
-            bMassj: planet.pl_bmassj
+            mass: +planet.pl_bmassj.toFixed(2)
           });
         });
 

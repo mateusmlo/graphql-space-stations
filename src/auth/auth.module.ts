@@ -2,7 +2,7 @@ import { Module, forwardRef } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { AuthResolver } from './auth.resolver';
 import { JwtModule } from '@nestjs/jwt';
-import { UserModule } from 'src/users/user.module';
+import { UserModule } from 'src/user/user.module';
 import { JwtConfigService } from 'src/config/jwt.config';
 import { ConfigModule } from '@nestjs/config';
 

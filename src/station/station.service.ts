@@ -58,4 +58,16 @@ export class StationService {
       throw new InternalServerErrorException(err);
     }
   }
+
+  async findStationById(stationId: string) {
+    try {
+      return await this.stationRepository.findOne({
+        where: { id: stationId },
+        relations: ['planet', 'recharges']
+      });
+    } catch (err) {
+      this.logger.error(err);
+      throw new InternalServerErrorException(err);
+    }
+  }
 }

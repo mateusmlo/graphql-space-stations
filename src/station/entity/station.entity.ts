@@ -1,5 +1,12 @@
 import { Planet } from 'src/planet/entities/planet.entity';
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Recharge } from 'src/recharge/entity/recharge.entity';
+import {
+  Column,
+  Entity,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn
+} from 'typeorm';
 
 @Entity()
 export class Station {
@@ -11,4 +18,7 @@ export class Station {
 
   @ManyToOne(() => Planet, (planet) => planet.stations, { nullable: false })
   planet: Planet;
+
+  @OneToMany(() => Recharge, (recharge) => recharge.station)
+  recharges?: Recharge[];
 }

@@ -1,4 +1,4 @@
-import { LoginDTO } from 'src/users/dto/user.dto';
+import { LoginDTO } from 'src/user/dto/user.dto';
 import { AuthService } from './auth.service';
 import { Args, Mutation, Resolver } from '@nestjs/graphql';
 import { AuthPayload } from './dto/auth-payload';

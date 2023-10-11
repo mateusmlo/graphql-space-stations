@@ -10,7 +10,7 @@ export class PlanetDTO {
   name!: string;
 
   @Field()
-  bMassj!: number;
+  mass!: number;
 
   @Field(() => [StationDTO])
   stations?: StationDTO[];
