@@ -15,7 +15,7 @@ export class RechargeHistoryDTO {
   elapsedTime?: string;
 
   @Field(() => RechargeStatus)
-  RechargeStatus?: RechargeStatus;
+  rechargeStatus?: RechargeStatus;
 
   @Field(() => UserDto)
   user!: UserDto;
