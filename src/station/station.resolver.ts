@@ -19,14 +19,6 @@ export class StationResolver {
     return this.stationService.findStations();
   }
 
-  @Query(() => StationDTO, {
-    name: 'planetStations',
-    description: 'Returns all stations on a given planet.'
-  })
-  findPlanetStations(@Args('planetId') planetId: string) {
-    return this.stationService.findPlanetStations(planetId);
-  }
-
   @Mutation(() => StationDTO, {
     name: 'newStation',
     description: 'Installs a new recharge station on a planet'

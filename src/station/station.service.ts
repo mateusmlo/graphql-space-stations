@@ -47,18 +47,6 @@ export class StationService {
     }
   }
 
-  async findPlanetStations(planetId: string) {
-    try {
-      return await this.stationRepository.findOne({
-        where: { planet: { id: planetId } },
-        relations: ['planet']
-      });
-    } catch (err) {
-      this.logger.error(err);
-      throw new InternalServerErrorException(err);
-    }
-  }
-
   async findStationById(stationId: string) {
     try {
       return await this.stationRepository.findOne({
