@@ -155,6 +155,7 @@ export class RechargeService {
     }
   }
 
+  //* updates recharges status every 30 minutes to check if they have finished and then reopen the station for new ones
   @Cron(CronExpression.EVERY_30_MINUTES)
   async handleRechargeJobs() {
     this.logger.log('[CRON JOB] Updating ongoing recharges status...');
