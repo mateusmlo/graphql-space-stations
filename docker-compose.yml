@@ -1,0 +1,61 @@
+services:
+  db:
+    image: mysql:latest
+    container_name: desafio-db
+    environment:
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_TCP_PORT=${MYSQL_TCP_PORT}
+      - TZ=-03:00
+    restart: always
+    healthcheck:
+      test: ["CMD-SHELL", "mysql -h ${MYSQL_HOST} -u admin -p$$MYSQL_PASSWORD" ]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 10s
+    ports:
+      - '3306:3306'
+    volumes:
+      - ./mysql:/var/lib/mysql
+    networks:
+      - mmlo
+
+  redis:
+    container_name: desafio-redis
+    image: bitnami/redis:latest
+    hostname: redis
+    ports:
+      - '6379:6379'
+    restart: always
+    healthcheck:
+      test: [ "CMD", "redis-cli", "--raw", "incr", "ping" ]
+      interval: 30s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+    networks:
+      - mmlo
+    volumes:
+      - .:/opt/finance-control/redis/data
+
+  redis-commander:
+    container_name: redis-commander
+    image: rediscommander/redis-commander:latest
+    hostname: redis-commander
+    restart: always
+    environment:
+      - REDIS_HOSTS=local:redis:6379
+    ports:
+      - "8081:8081" 
+    depends_on:
+      - redis
+    networks:
+      - mmlo     
+
+networks:
+  mmlo:
