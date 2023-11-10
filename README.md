@@ -2,7 +2,7 @@
 
 ## Sobre o desafio
 
-Meu repositório para o desafio técnico da Voltbras! Num geral foi um desafio relativamente simples, com um ponto de atenção que é a comunicação com a API da NASA (claramente um legadão) que retorna um volume extremamente alto de dados, já casando com a ideia do GraphQL de recuperar apenas o necessário, o que na API da NASA é feito via SQL no query parameter. Para lidar com o volume de dados decidi usar cache com Redis, com duração de 24h (já que novos planetas não devem aparecer tão fácil), então apenas o primeiro request vai levar alguns segundos. Possui autenticação com JWT em todas as rotas. Um dos desafios, como de praxe no JS, foi lidar com as datas para a lógica do período de recarga nas estações e também para o histórico das recargas. A atualização dos status das recargas e liberação das estações é feita via Cron a cada 10 minutos.
+Desafio técnico em GraphQL. Num geral foi um projeto relativamente simples, com um ponto de atenção que é a comunicação com a API da NASA (claramente um legadão) que retorna um volume extremamente alto de dados, já casando com a ideia do GraphQL de recuperar apenas o necessário, o que na API da NASA é feito via SQL no query parameter. Para lidar com o volume de dados decidi usar cache com Redis, com duração de 24h (já que novos planetas não devem aparecer tão fácil), então apenas o primeiro request vai levar alguns segundos. Possui autenticação com JWT em todas as rotas. Um dos desafios, como de praxe no JS, foi lidar com as datas para a lógica do período de recarga nas estações e também para o histórico das recargas. A atualização dos status das recargas e liberação das estações é feita via Cron a cada 10 minutos.
 
 ## Stack
 
